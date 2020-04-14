@@ -56,4 +56,13 @@ defmodule Cards do
       {:error, _reason} -> "This file does not exist"
     end
   end
+
+  # The pipe operator uses the return value of the previous method call as the first argument for the following one
+  # You need to make sure that your methods are declared with arguments in the appropriate order to be able to
+  # use the pipe operator and chain method calls.
+  def create_hand(hand_size) do
+    Cards.create_deck()
+    |> Cards.shuffle()
+    |> Cards.deal(hand_size)
+  end
 end
