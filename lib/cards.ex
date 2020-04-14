@@ -45,4 +45,15 @@ defmodule Cards do
     binary = :erlang.term_to_binary(deck)
     File.write(filename, binary)
   end
+
+  # When we see a column before a word in Elixir, it is a primitive data type called atom
+  # Atoms in Elixir are used to manage control flow, like error messages or status codes
+  # The difference between an atom and a string is that strings are a bunch of info that can be passed on
+  # to the user, whereas an atom is a bunch of information that only developers should see.
+  def load(filename) do
+    case File.read(filename) do
+      {:ok, binary} -> :erlang.binary_to_term(binary)
+      {:error, _reason} -> "This file does not exist"
+    end
+  end
 end
