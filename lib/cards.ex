@@ -1,6 +1,8 @@
-# This command defines a module
+# The defmodule command defines a module
 # In Elixir, nearly all code will be written inside modules
 # A module is a collection of different methods or functions
+
+# Single quotes are supported but the convention is to use double quotes.
 
 # In functions, there can be no return keyword. Elixir has an implicit return value. Whatever the last line of a function
 # is will be the return value of that function.
@@ -11,7 +13,12 @@
 # data structure that is modified according to need. A data structure cannot be mutated.
 
 defmodule Cards do
-  # Single quotes are supported but the convention is to use double quotes.
+  @moduledoc """
+    Provides methods for creating and handling a deck of cards
+  """
+  @doc """
+    Returns a list of strings representing a deck of cards
+  """
   def create_deck do
     values = ["Ace", "Two", "Three", "Four", "Five"]
     suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
@@ -37,6 +44,19 @@ defmodule Cards do
 
   # Pattern matching is Elixir's replacement for variable assignment
   # Pattern matching is used everytime we use the = sign
+
+  @doc """
+    Divides a deck into a hand and the remainder of the deck.
+    The `hand_size` argument indicates how many cards should be in the hand.
+
+  ## Examples
+
+      iex> deck = Cards.create_deck
+      iex> { hand, deck } = Cards.deal(deck, 1)
+      iex> hand
+      ["Ace of Spades"]
+
+  """
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)
   end
