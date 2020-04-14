@@ -34,4 +34,10 @@ defmodule Cards do
   def contains?(deck, card) do
     Enum.member?(deck, card)
   end
+
+  # Pattern matching is Elixir's replacement for variable assignment
+  # Pattern matching is used everytime we use the = sign
+  def deal(deck, hand_size) do
+    Enum.split(deck, hand_size)
+  end
 end
